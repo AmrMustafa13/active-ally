@@ -13,7 +13,28 @@ const createToken = (_id) => {
 };
 
 const loginUser = async (req, res) => {
-  res.json("Login");
+  const { email, password } = req.body;
+
+  // input validation
+  if (!email || !password)
+    return res.status(400).json({ error: "All fields must be filled" });
+
+  // check if email already exists
+  const user = await userSchema.findOne({ email });
+  if (!user)
+    return res.status(400).json({ error: "Incorrect Email or Password" });
+
+  const correctPassword = await bcrypt.compare(password, user.password);
+
+  if (!correctPassword)
+    return res.status(400).json({ error: "Incorrect Email or Password" });
+
+  try {
+    const token = createToken(user._id);
+    res.status(200).json({ email, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const signupUser = async (req, res) => {
@@ -44,7 +65,7 @@ const signupUser = async (req, res) => {
       password: hashedPassword,
     });
     const token = createToken(newSavedUser._id);
-    res.status(201).json(token);
+    res.status(201).json({ email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
