@@ -9,4 +9,4 @@ an app where you can add your favourite workouts or delete an existing one with 
 - MongoDB
 - Mongoose
 - React.js
-- data-fns
+- date-fns
