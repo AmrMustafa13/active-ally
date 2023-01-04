@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 const workoutsRoute = require("./routes/workouts");
 const usersRoute = require("./routes/users");
@@ -7,6 +8,14 @@ const usersRoute = require("./routes/users");
 const app = express();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5000",
+      "https://workout-tracker-frontend.onrender.com",
+    ],
+  })
+);
 
 app.use("/api/workouts", workoutsRoute);
 app.use("/api/users", usersRoute);
