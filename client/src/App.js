@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import "./app.css";
 
 export const SERVER_BASE_URL = process.env.REACT_APP_API_URL;
-console.log(SERVER_BASE_URL);
 
 const App = () => {
   const { user } = useAuthContext();
