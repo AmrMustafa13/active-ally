@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import "./app.css";
 
+export const SERVER_BASE_URL = env.process.REACT_APP_API_URL;
+
 const App = () => {
   const { user } = useAuthContext();
 

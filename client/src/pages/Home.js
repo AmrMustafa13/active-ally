@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { SERVER_BASE_URL } from "../App";
 
 const Home = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -9,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch(`/api/workouts`, {
+      const response = await fetch(`${SERVER_BASE_URL}/api/workouts`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
