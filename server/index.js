@@ -9,7 +9,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://workout-tracker-frontend.onrender.com",
+    credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
