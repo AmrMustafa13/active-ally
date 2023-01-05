@@ -7,15 +7,16 @@ const usersRoute = require("./routes/users");
 
 const app = express();
 
-app.use(express.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:5000",
+      "http://localhost:3000",
       "https://workout-tracker-frontend.onrender.com",
     ],
   })
 );
+
+app.use(express.json());
 
 app.use("/api/workouts", workoutsRoute);
 app.use("/api/users", usersRoute);
