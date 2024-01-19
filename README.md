@@ -1,9 +1,8 @@
-# A Workouts App
+# Active Ally
 
-an app where you can add your favourite workouts or delete an existing one with full authentication functionality using MERN stack.
+### website where you can track your fav workouts with full authentication functionality using MERN stack. 
 
-## Tools
-
+# Stack & Tools
 - Node.js
 - Express
 - MongoDB
